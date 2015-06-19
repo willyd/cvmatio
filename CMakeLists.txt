@@ -4,8 +4,13 @@ project(cvmatio)
 
 # -----------------------------------------------
 # USER-DEFINED VARIABLES
-option(BUILD_EXECUTABLE "Build as executable to test functionality" OFF)
-option(BUILD_DOC        "Build documentation with Doxygen"          ON)
+option(BUILD_EXECUTABLE   "Build as executable to test functionality" OFF)
+option(BUILD_DOC          "Build documentation with Doxygen"          ON)
+option(BUILD_SHARED_LIBS  "Build shared libraries"                    ON)
+if(MSVC)
+    message(WARNING "Forcing build of static lib with Visual Studio")
+    set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+endif()
 
 # --------------------
 # CATKIN
